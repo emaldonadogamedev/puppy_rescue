@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class PerritoBehavior : MonoBehaviour
 {
+    public enum DOG_TYPE 
+    {
+        FAR,
+        NORMAL,
+        CLOSE,
+    }
+
     public GameObject destinationOwner;
     public GameObject kartGameObject;
+
+    public float timeToDeliver = 9f;
+    public DOG_TYPE dogType = DOG_TYPE.CLOSE;
 
     private bool isGrabbedFromStreet = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -20,7 +29,13 @@ public class PerritoBehavior : MonoBehaviour
     {
         if(isGrabbedFromStreet)
         {
-            
+            timeToDeliver -= Time.deltaTime;
+
+            if (timeToDeliver < 0)
+            {
+                this.gameObject.SetActive(false);
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -35,6 +50,8 @@ public class PerritoBehavior : MonoBehaviour
 
         if(other.gameObject == destinationOwner && isGrabbedFromStreet)
         {
+            isGrabbedFromStreet = false;
+
             this.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
