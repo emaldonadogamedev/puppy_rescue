@@ -45,7 +45,7 @@ public class PerritoBehavior : MonoBehaviour
         {
             isGrabbedFromStreet = true;
 
-            this.transform.SetParent(PerritoGameManager.perritoGrabberItem.transform);
+            transform.SetParent(PerritoGameManager.perritoGrabberItem.transform);
         }
 
         // dog delivered
