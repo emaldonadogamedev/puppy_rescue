@@ -13,6 +13,8 @@ public class PerritoGrabBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PerritoGameManager.deliveryMissed += TurnOffArrow;
+        PerritoGameManager.deliveryDone += TurnOffArrow;
     }
 
     // Update is called once per frame
@@ -29,6 +31,11 @@ public class PerritoGrabBehavior : MonoBehaviour
         }
     }
 
+    private void TurnOffArrow()
+    {
+        this.arrowMarker.SetActive(false);
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         currentPerritoBehavior = other.gameObject.GetComponent<PerritoBehavior>();
@@ -39,5 +46,11 @@ public class PerritoGrabBehavior : MonoBehaviour
 
             PerritoGameManager.newDelivery.Invoke(this.gameObject, destinationForPerrito);
         }
+    }
+
+    private void OnDisable()
+    {
+        PerritoGameManager.deliveryMissed -= TurnOffArrow;
+        PerritoGameManager.deliveryDone -= TurnOffArrow;
     }
 }
