@@ -11,13 +11,15 @@ public class PerritoGameManager : MonoBehaviour
 
     public static GameObject currentPerritoGrabbed { get; private set; }
     public static GameObject currentDeliveryPoint { get; private set; }
+    public static GameObject perritoGrabberItem => perritoGrabGO;
 
     public static int doneDeliveries { get; private set; }
     public static int missedDeliveries { get; private set; }
 
     public static int totalDeliveries => doneDeliveries + missedDeliveries;
 
-    private GameObject perritoKart;
+    static private GameObject perritoKart;
+    static private GameObject perritoGrabGO;
 
     private static void SetNewDelivery(GameObject currentPerrito, GameObject currentDelivery)
     {
@@ -47,7 +49,11 @@ public class PerritoGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimeManager.OnSetTime(60, true, GameMode.TimeLimit);
+
         perritoKart = GameObject.Find("PerritoKart");
+        perritoGrabGO = perritoKart.transform.Find("PerritoGrab").gameObject;
+
         newDelivery += SetNewDelivery;
         deliveryDone += DeliveryDone;
         deliveryMissed += DeliveryMissed;

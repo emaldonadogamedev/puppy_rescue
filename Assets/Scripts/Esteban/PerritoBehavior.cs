@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class PerritoBehavior : MonoBehaviour
 {
-    public enum DOG_TYPE 
+    public enum DOG_TYPE
     {
         FAR,
         NORMAL,
@@ -10,7 +11,6 @@ public class PerritoBehavior : MonoBehaviour
     }
 
     public GameObject destinationOwner;
-    public GameObject kartGameObject;
 
     public float timeToDeliver = 9f;
     public DOG_TYPE dogType = DOG_TYPE.CLOSE;
@@ -41,11 +41,11 @@ public class PerritoBehavior : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == kartGameObject)
+        if(other.gameObject == PerritoGameManager.perritoGrabberItem)
         {
             isGrabbedFromStreet = true;
 
-            this.transform.SetParent(kartGameObject.transform);
+            this.transform.SetParent(PerritoGameManager.perritoGrabberItem.transform);
         }
 
         // dog delivered
