@@ -25,6 +25,11 @@ public class SceneChange : MonoBehaviour
         SceneManager.LoadScene("TestCollectPuppy");
     }
 
+    public void instructionsScreen()
+    {
+        SceneManager.LoadScene("instructionsScreen");
+    }
+
 
     public void credits()
     {

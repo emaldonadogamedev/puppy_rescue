@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Antonella/credits.unity
     guid: d2aa47ae300bce24199f5bc40120f350
+  - enabled: 1
+    path: Assets/Scenes/Antonella/instructionsScreen.unity
+    guid: fb6bc1cd024fc864ebf9065b74f75e76
   m_configObjects: {}
