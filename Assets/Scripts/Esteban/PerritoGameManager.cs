@@ -1,34 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 public class PerritoGameManager : MonoBehaviour
 {
-    private static GameObject currentPerritoGrabbed;
-    private static GameObject currentDeliveryPoint;
+    public static Action<GameObject, GameObject> newDelivery;
+    public static Action deliveryDone;
+    public static Action deliveryMissed;
 
-    private static UnityEvent deliveryDone;
-    private static UnityEvent deliveryMissed;
+    public static GameObject currentPerritoGrabbed { get; private set; }
+    public static GameObject currentDeliveryPoint { get; private set; }
+
+    public static int doneDeliveries { get; private set; }
+    public static int missedDeliveries { get; private set; }
+
+    public static int totalDeliveries => doneDeliveries + missedDeliveries;
 
     private GameObject perritoKart;
 
-    public static void SetNewDelivery(GameObject currentPerrito, GameObject currentDelivery)
+    private static void SetNewDelivery(GameObject currentPerrito, GameObject currentDelivery)
     {
         currentPerritoGrabbed = currentPerrito;
         currentDeliveryPoint = currentDelivery;
     }
 
-    public static void DeliveryDone()
+    private static void DeliveryDone()
     {
-        deliveryDone.Invoke();
         ResetDeliveryData();
     }
 
-    public static void DeliveryMissed()
+    private static void DeliveryMissed()
     {
-        deliveryMissed.Invoke();
         ResetDeliveryData();
     }
 
@@ -37,10 +40,22 @@ public class PerritoGameManager : MonoBehaviour
         SetNewDelivery(null, null);
     }
 
+    private void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         perritoKart = GameObject.Find("PerritoKart");
+        newDelivery += SetNewDelivery;
+        deliveryDone += DeliveryDone;
+        deliveryMissed += DeliveryMissed;
+
+        currentPerritoGrabbed = null;
+        currentDeliveryPoint = null;
+        doneDeliveries = 0;
+        missedDeliveries = 0;
     }
 
     // Update is called once per frame
@@ -49,9 +64,12 @@ public class PerritoGameManager : MonoBehaviour
         
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        deliveryDone.RemoveAllListeners();
-        deliveryMissed.RemoveAllListeners();
+        newDelivery -= SetNewDelivery;
+        deliveryDone -= DeliveryDone;
+        deliveryMissed -= DeliveryMissed;
+        doneDeliveries = 0;
+        missedDeliveries = 0;
     }
 }

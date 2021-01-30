@@ -10,12 +10,9 @@ public class PerritoGrabBehavior : MonoBehaviour
 
     private GameObject destinationForPerrito = null;
 
-    private 
-
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -39,6 +36,8 @@ public class PerritoGrabBehavior : MonoBehaviour
         {
             destinationForPerrito = currentPerritoBehavior.destinationOwner;
             arrowMarker.SetActive(true);
+
+            PerritoGameManager.newDelivery.Invoke(this.gameObject, destinationForPerrito);
         }
     }
 }

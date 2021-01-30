@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PerritoBehavior : MonoBehaviour
 {
@@ -35,6 +33,8 @@ public class PerritoBehavior : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Destroy(this.gameObject);
+
+                PerritoGameManager.deliveryMissed();
             }
         }
     }
@@ -48,12 +48,15 @@ public class PerritoBehavior : MonoBehaviour
             this.transform.SetParent(kartGameObject.transform);
         }
 
+        // dog delivered
         if(other.gameObject == destinationOwner && isGrabbedFromStreet)
         {
             isGrabbedFromStreet = false;
 
             this.gameObject.SetActive(false);
             Destroy(this.gameObject);
+
+            PerritoGameManager.deliveryDone.Invoke();
         }
     }
 
