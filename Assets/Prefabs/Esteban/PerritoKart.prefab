@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 5509270017335848328}
   m_Layer: 2
   m_Name: PerritoGrab
-  m_TagString: Untagged
+  m_TagString: PerritoGrab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

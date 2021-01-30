@@ -5,12 +5,10 @@ using UnityEngine;
 public class PerritoGrabBehavior : MonoBehaviour
 {
     public GameObject arrowMarker;
-    private Vector2 arrowMarkerXZpos;
 
     private PerritoBehavior currentPerritoBehavior = null;
 
     private GameObject destinationForPerrito = null;
-    private Vector2 destinationForPerritoXZpos;
 
     private 
 
@@ -40,7 +38,6 @@ public class PerritoGrabBehavior : MonoBehaviour
         if (currentPerritoBehavior != null)
         {
             destinationForPerrito = currentPerritoBehavior.destinationOwner;
-            destinationForPerritoXZpos = new Vector2(destinationForPerrito.transform.position.x, destinationForPerrito.transform.position.z);
             arrowMarker.SetActive(true);
         }
     }
