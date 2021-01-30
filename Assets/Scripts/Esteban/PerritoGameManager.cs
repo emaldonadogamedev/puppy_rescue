@@ -49,8 +49,9 @@ public class PerritoGameManager : MonoBehaviour
         
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        
+        deliveryDone.RemoveAllListeners();
+        deliveryMissed.RemoveAllListeners();
     }
 }
