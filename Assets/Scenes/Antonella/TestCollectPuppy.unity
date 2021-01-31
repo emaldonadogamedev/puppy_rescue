@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 380461792}
   - component: {fileID: 380461791}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: greenBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,8 +1348,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.8, y: 220.6}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 27.24, y: 220.6}
+  m_SizeDelta: {x: 135.30537, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380461791
 MonoBehaviour:
@@ -1792,7 +1792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -477.35, y: -224.78}
+  m_AnchoredPosition: {x: -477.35, y: -201.94}
   m_SizeDelta: {x: 84.29736, y: 71.44971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506948470
@@ -2837,7 +2837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationOwner: {fileID: 1086084076}
-  kartGameObject: {fileID: 884552606}
   timeToDeliver: 9
   dogType: 2
 --- !u!135 &717967804
@@ -2926,7 +2925,7 @@ GameObject:
   - component: {fileID: 763466523}
   - component: {fileID: 763466522}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: blueBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2948,8 +2947,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.6, y: 216.9}
-  m_SizeDelta: {x: 100, y: 85}
+  m_AnchoredPosition: {x: 28.09, y: 216.9}
+  m_SizeDelta: {x: 135.85971, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763466522
 MonoBehaviour:
@@ -4260,7 +4259,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025405884}
-  m_LocalRotation: {x: 0.13449772, y: 0.0000000964935, z: -0.00000055783914, w: 0.990914}
+  m_LocalRotation: {x: 0.1344977, y: 0.00000006015936, z: -0.00000055290747, w: 0.990914}
   m_LocalPosition: {x: 12.93, y: 3.773, z: -13.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6426,7 +6425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 467, y: -213.36}
+  m_AnchoredPosition: {x: 474, y: -190.52}
   m_SizeDelta: {x: 77.15973, y: 94.28993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1652948871
@@ -7274,8 +7273,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -438.2, y: 225}
-  m_SizeDelta: {x: 147.108, y: 58.60208}
+  m_AnchoredPosition: {x: -446.1, y: 212.6}
+  m_SizeDelta: {x: 131.30972, y: 58.60208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911221356
 MonoBehaviour:
@@ -7840,7 +7839,7 @@ GameObject:
   - component: {fileID: 2083176769}
   - component: {fileID: 2083176768}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: doggo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7977,7 +7976,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110853102}
-  m_LocalRotation: {x: 0.13449772, y: 0.0000000964935, z: -0.00000055783914, w: 0.990914}
+  m_LocalRotation: {x: 0.1344977, y: 0.00000006015936, z: -0.00000055290747, w: 0.990914}
   m_LocalPosition: {x: 12.93, y: 3.773, z: -13.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
