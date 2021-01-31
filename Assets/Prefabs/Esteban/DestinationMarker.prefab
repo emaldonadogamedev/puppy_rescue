@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 2
-  lowerScaleVal: 0.3
-  higherScaleVal: 1
+  lowerScaleVal: 0.1
+  higherScaleVal: 0.6
 --- !u!1001 &8540177866454978104
 PrefabInstance:
   m_ObjectHideFlags: 0
