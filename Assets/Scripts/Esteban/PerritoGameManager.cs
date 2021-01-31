@@ -16,8 +16,9 @@ public class PerritoGameManager : MonoBehaviour
 
     public static int doneDeliveries { get; private set; }
     public static int missedDeliveries { get; private set; }
-
     public static int totalDeliveries => doneDeliveries + missedDeliveries;
+
+    public static int totalRescuedDogs { get; private set; }
 
     static private GameObject perritoKart;
     static private GameObject perritoGrabGO;
@@ -25,6 +26,8 @@ public class PerritoGameManager : MonoBehaviour
     public static float timeToDeliverDog { get; private set; } = 0f;
     public static float timeRemainingToDeliverDog { get; private set; } = 0f;
     public static bool isDeliveringDog { get; private set; } = false;
+
+    public int initialTime = 60;
 
     private TimeManager timeManager;
 
@@ -41,6 +44,7 @@ public class PerritoGameManager : MonoBehaviour
     private static void DeliveryDone()
     {
         TimeManager.OnAdjustTime(10f);
+        totalRescuedDogs++;
         ResetDeliveryData();
     }
 
@@ -64,7 +68,7 @@ public class PerritoGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimeManager.OnSetTime(5, true, GameMode.TimeLimit);
+        TimeManager.OnSetTime(initialTime, true, GameMode.TimeLimit);
         timeManager = this.gameObject.GetComponent<TimeManager>();
 
         perritoKart = GameObject.Find("PerritoKart");
@@ -80,6 +84,7 @@ public class PerritoGameManager : MonoBehaviour
         currentDeliveryPoint = null;
         doneDeliveries = 0;
         missedDeliveries = 0;
+        totalRescuedDogs = 0;
 
         timeToDeliverDog = 0f;
         isDeliveringDog = false;
