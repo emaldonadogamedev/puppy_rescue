@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PerritoGameManager : MonoBehaviour
 {
@@ -21,16 +22,25 @@ public class PerritoGameManager : MonoBehaviour
     static private GameObject perritoKart;
     static private GameObject perritoGrabGO;
 
+    public static float timeToDeliverDog { get; private set; } = 0f;
+    public static float timeRemainingToDeliverDog { get; private set; } = 0f;
+    public static bool isDeliveringDog { get; private set; } = false;
+
     private TimeManager timeManager;
 
     private static void SetNewDelivery(GameObject currentPerrito, GameObject currentDelivery)
     {
         currentPerritoGrabbed = currentPerrito;
         currentDeliveryPoint = currentDelivery;
+
+        timeToDeliverDog = currentPerritoGrabbed.GetComponent<PerritoBehavior>().timeToDeliver;
+        timeRemainingToDeliverDog = timeToDeliverDog;
+        isDeliveringDog = true;
     }
 
     private static void DeliveryDone()
     {
+        TimeManager.OnAdjustTime(10f);
         ResetDeliveryData();
     }
 
@@ -41,7 +51,10 @@ public class PerritoGameManager : MonoBehaviour
 
     private static void ResetDeliveryData()
     {
-        SetNewDelivery(null, null);
+        isDeliveringDog = false;
+        timeRemainingToDeliverDog = 0f;
+        currentPerritoGrabbed = null;
+        currentDeliveryPoint = null;
     }
 
     private void Awake()
@@ -51,7 +64,7 @@ public class PerritoGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimeManager.OnSetTime(60, true, GameMode.TimeLimit);
+        TimeManager.OnSetTime(5, true, GameMode.TimeLimit);
         timeManager = this.gameObject.GetComponent<TimeManager>();
 
         perritoKart = GameObject.Find("PerritoKart");
@@ -61,10 +74,15 @@ public class PerritoGameManager : MonoBehaviour
         deliveryDone += DeliveryDone;
         deliveryMissed += DeliveryMissed;
 
+        TimeManager.OnRunOutOfTime += GameOver;
+
         currentPerritoGrabbed = null;
         currentDeliveryPoint = null;
         doneDeliveries = 0;
         missedDeliveries = 0;
+
+        timeToDeliverDog = 0f;
+        isDeliveringDog = false;
 
         timeManager.StartRace();
     }
@@ -72,14 +90,42 @@ public class PerritoGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDeliveringDog)
+        {
+            timeRemainingToDeliverDog -= Time.deltaTime;
+
+            if(timeRemainingToDeliverDog <= 0f)
+            {
+                currentPerritoGrabbed.SetActive(false);
+                Destroy(currentPerritoGrabbed);
+
+                deliveryMissed?.Invoke();
+            }
+        }
+
+        // pichea, quiero irme...
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("winScreen");
     }
 
     private void OnDisable()
     {
+        TimeManager.OnRunOutOfTime -= GameOver;
+
         newDelivery -= SetNewDelivery;
         deliveryDone -= DeliveryDone;
         deliveryMissed -= DeliveryMissed;
         doneDeliveries = 0;
         missedDeliveries = 0;
+
+        timeToDeliverDog = 0f;
+        isDeliveringDog = false;
     }
 }

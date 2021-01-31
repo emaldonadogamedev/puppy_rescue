@@ -44,7 +44,7 @@ public class PerritoGrabBehavior : MonoBehaviour
             destinationForPerrito = currentPerritoBehavior.destinationOwner;
             arrowMarker.SetActive(true);
 
-            PerritoGameManager.newDelivery.Invoke(this.gameObject, destinationForPerrito);
+            PerritoGameManager.newDelivery.Invoke(currentPerritoBehavior.gameObject, destinationForPerrito);
         }
     }
 

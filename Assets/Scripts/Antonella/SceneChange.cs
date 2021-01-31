@@ -36,7 +36,6 @@ public class SceneChange : MonoBehaviour
         SceneManager.LoadScene("credits");
     }
 
-
     void Start()
     {
         

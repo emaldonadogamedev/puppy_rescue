@@ -14,6 +14,7 @@ public class TimeManager : MonoBehaviour
 
     public static Action<float> OnAdjustTime;
     public static Action<int, bool, GameMode> OnSetTime;
+    public static Action OnRunOutOfTime;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class TimeManager : MonoBehaviour
             {
                 TimeRemaining = 0;
                 IsOver = true;
+                OnRunOutOfTime?.Invoke();
             }
         }
     }

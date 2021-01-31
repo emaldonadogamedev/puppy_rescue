@@ -25,18 +25,6 @@ public class PerritoBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isGrabbedFromStreet)
-        {
-            timeToDeliver -= Time.deltaTime;
-
-            if (timeToDeliver < 0)
-            {
-                this.gameObject.SetActive(false);
-                Destroy(this.gameObject);
-
-                PerritoGameManager.deliveryMissed();
-            }
-        }
     }
 
     public void OnTriggerEnter(Collider other)
