@@ -14,7 +14,6 @@ public class PerritoBehavior : MonoBehaviour
 
     public float timeToDeliver = 9f;
     public DOG_TYPE dogType = DOG_TYPE.CLOSE;
-
     private bool isGrabbedFromStreet = false;
 
     // Start is called before the first frame update
@@ -31,8 +30,7 @@ public class PerritoBehavior : MonoBehaviour
     {
         if(other.gameObject == PerritoGameManager.perritoGrabberItem)
         {
-            isGrabbedFromStreet = true;
-
+            isGrabbedFromStreet = true;          
             transform.SetParent(PerritoGameManager.perritoGrabberItem.transform);
         }
 
