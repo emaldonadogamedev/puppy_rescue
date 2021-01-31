@@ -21,7 +21,6 @@ public class TimeManager : MonoBehaviour
         TimeRemaining = TotalTime;
     }
 
-
     void OnEnable()
     {
         OnAdjustTime += AdjustTime;

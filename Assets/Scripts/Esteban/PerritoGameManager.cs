@@ -21,6 +21,8 @@ public class PerritoGameManager : MonoBehaviour
     static private GameObject perritoKart;
     static private GameObject perritoGrabGO;
 
+    private TimeManager timeManager;
+
     private static void SetNewDelivery(GameObject currentPerrito, GameObject currentDelivery)
     {
         currentPerritoGrabbed = currentPerrito;
@@ -50,6 +52,7 @@ public class PerritoGameManager : MonoBehaviour
     void Start()
     {
         TimeManager.OnSetTime(60, true, GameMode.TimeLimit);
+        timeManager = this.gameObject.GetComponent<TimeManager>();
 
         perritoKart = GameObject.Find("PerritoKart");
         perritoGrabGO = perritoKart.transform.Find("PerritoGrab").gameObject;
@@ -62,12 +65,13 @@ public class PerritoGameManager : MonoBehaviour
         currentDeliveryPoint = null;
         doneDeliveries = 0;
         missedDeliveries = 0;
+
+        timeManager.StartRace();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnDisable()
