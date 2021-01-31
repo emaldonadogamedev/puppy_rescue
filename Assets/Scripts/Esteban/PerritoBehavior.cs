@@ -42,6 +42,8 @@ public class PerritoBehavior : MonoBehaviour
             this.gameObject.SetActive(false);
             Destroy(this.gameObject);
 
+            destinationOwner.SetActive(false);
+
             PerritoGameManager.deliveryDone.Invoke();
         }
     }

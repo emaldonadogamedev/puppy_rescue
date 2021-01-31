@@ -104,6 +104,9 @@ public class PerritoGameManager : MonoBehaviour
                 currentPerritoGrabbed.SetActive(false);
                 Destroy(currentPerritoGrabbed);
 
+                currentDeliveryPoint.SetActive(false);
+                Destroy(currentDeliveryPoint);
+
                 deliveryMissed?.Invoke();
             }
         }
