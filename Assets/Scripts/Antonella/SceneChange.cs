@@ -12,7 +12,7 @@ public class SceneChange : MonoBehaviour
     
     public void mainTestCollectPuppyMenu()
     {
-        SceneManager.LoadScene("TestCollectPuppy");
+        SceneManager.LoadScene("MainPerritoGame");
     }
 
     public void mainMenu()
@@ -22,7 +22,7 @@ public class SceneChange : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene("TestCollectPuppy");
+        SceneManager.LoadScene("MainPerritoGame");
     }
 
     public void instructionsScreen()

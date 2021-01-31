@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Antonella/winScreen.unity
     guid: e236fa9f9cfe82f408934c94f1dbda89
+  - enabled: 1
+    path: Assets/Scenes/MainPerritoGame.unity
+    guid: c2cd0bb3e666a4c439ebdd8ef269d266
   m_configObjects: {}
